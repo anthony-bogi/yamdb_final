@@ -1,6 +1,6 @@
 FROM python:3.7-slim
 
-COPY /api_yamdb /app
+COPY . /app
 
 RUN pip install -r app/requirements.txt --no-cache-dir
 
