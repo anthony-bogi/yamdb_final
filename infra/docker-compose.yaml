@@ -5,11 +5,12 @@ services:
     image: postgres:13.0-alpine
     restart: always
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data/
+      - bd_data:/var/lib/postgresql/data/
     env_file:
       - ./.env
   web:
-    build: ../api_yamdb
+    # build: ../api_yamdb
+    image: bogianthony/infra_sp2_yambd:latest
     restart: always
     volumes:
       - static_value:/app/static/
@@ -33,3 +34,4 @@ services:
 volumes:
   static_value:
   media_value:
+  bd_data:

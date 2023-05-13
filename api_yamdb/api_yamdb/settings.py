@@ -2,14 +2,13 @@ import os
 from datetime import timedelta
 from pathlib import Path
 
-# from dotenv import find_dotenv, load_dotenv
+from dotenv import find_dotenv, load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# load_dotenv(find_dotenv())
+load_dotenv(find_dotenv())
 
-# SECRET_KEY = os.environ['SECRET_KEY']
-SECRET_KEY = 'p&l%385148kslhtyn^##a1)ilz@4zqj=rq&agdol^##zgl9(vs'
+SECRET_KEY = os.getenv('SECRET_KEY', default='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
 
 DEBUG = False
 
@@ -63,12 +62,12 @@ WSGI_APPLICATION = 'api_yamdb.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('POSTGRES_USER'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
+        'ENGINE': os.getenv('DB_ENGINE', default='django.db.backends.postgresql'),
+        'NAME': os.getenv('DB_NAME', default='name_bd'),
+        'USER': os.getenv('POSTGRES_USER', default='user_1'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='password_password'),
+        'HOST': os.getenv('DB_HOST', default='local_host'),
+        'PORT': os.getenv('DB_PORT', default='5432')
     }
 }
 
